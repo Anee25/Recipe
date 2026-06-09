@@ -1,0 +1,129 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="C:\Users\Admin\OneDrive\Desktop\Web Designing\bootstrap.min.css">
+	<script src="C:\Users\Admin\OneDrive\Desktop\Web Designing\bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="C:\Users\Admin\OneDrive\Desktop\Web Designing\Recipe\jquery.min.js"></script>
+
+<style>
+body {
+    background-color: #FFF8E7;
+}
+#section{
+display:none;
+}
+
+#likeCount{
+    margin-top:10px;
+    font-weight:bold;
+}
+</style><br>
+<script>
+$(document).ready(function(){
+	$("#section").slideDown(1000);
+});
+</script>
+
+<script>
+$(document).ready(function(){
+let likes=0;
+    $("#likeBtn").click(function(){
+
+        likes++;
+
+        $("#likeCount").text("Likes: " + likes);
+
+        $(this).fadeOut(150).fadeIn(150);
+
+    });
+});
+
+
+
+$(document).ready(function () {
+
+    $("#saveBtn").click(function () {
+
+        let recipe = {
+            title: $("h2").text(),
+            ingredients: $("ul").text(),
+            method: $("ol").text()
+        };
+
+        localStorage.setItem("savedRecipe", JSON.stringify(recipe));
+
+        $("#saveMsg").text("Recipe saved successfully!");
+    });
+
+});
+</script>
+<script>
+let saved = localStorage.getItem("savedRecipe");
+
+if(saved){
+    let recipe = JSON.parse(saved);
+    console.log(recipe);
+}
+</script>
+
+</head>
+<body>
+<div id="section">	
+<div class="container-fluid">
+<h2>Gobhi Parantha</h2>
+<h4>Ingredients</h4>
+<ul>
+<li>Makes 4</li>
+</ul>
+
+<h4>Stuffing</h4>
+<ul>
+<li>1 cup thinly grated cauliflower</li>
+<li>1 tablespoon kasuri methi</li>
+<li>1⁄2 teaspoon roasted cumin powder</li>
+<li>1/4 teaspoon finely chopped green chili</li>
+<li>1/4 teaspoon cinnamon
+powder</li>
+<li>1⁄2 teaspoon cardamom powder</li>
+</ul>
+
+<h4>Other Ingredients</h4>
+<ul>
+<li>1⁄2 cup boiled and grated
+potato</li>
+<li>1⁄2 teaspoon rock salt</li>
+</ul>
+
+<h4>Dough</h4>
+<ul>
+<li>1 cup whole wheat flour</li>
+<li>1/2 cup water</li>
+</ul>
+
+<h4>Method</h4>
+<ol>
+<li>Heat a pot, add all the stuffing ingredients, and cook for 3 minutes on medium flame until the cauliflower is soft.</li>
+<li>Add the other ingredients, and stir. Cover the pot, and allow to cool for some time.</li>
+<li>Meanwhile, prepare the dough. Combine the wheat flour and water in a bowl, and knead the dough. Cover, and allow to rest for 10 minutes.</li>
+<li>Divide the dough into 4 balls, dip each ball in flour, and flatten it. Place some stuffing in the center of each flattened circle. Pull the edges together, and seal it on top. Sprinkle some flour on, and roll into a 6 inch circle with a rolling pin (belan).</li>
+<li>Heat a cast iron tawa, and
+cook the paranthas on
+medium flame.</li>
+<li>Serve warm with chutney.</li>
+</ol>
+
+<button type="button" id="likeBtn">❤️ Like Recipe</button>
+            <p id="likeCount">Likes: 0</p>
+
+<button id="saveBtn" class="btn btn-success">
+    💾 Save Recipe
+</button>
+<p id="saveMsg"></p>
+	<p>
+		<a href="roti.html">Back To Recipe</a>
+	</p>
+</div>
+</div>
+</body>
+</html>
