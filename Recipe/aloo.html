@@ -1,0 +1,124 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="C:\Users\Admin\OneDrive\Desktop\Web Designing\bootstrap.min.css">
+	<script src="C:\Users\Admin\OneDrive\Desktop\Web Designing\bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="C:\Users\Admin\OneDrive\Desktop\Web Designing\Recipe\jquery.min.js"></script>
+
+<style>
+body {
+    background-color: #FFF8E7;
+}
+#section{
+display:none;
+}
+
+#likeCount{
+    margin-top:10px;
+    font-weight:bold;
+}
+</style><br>
+<script>
+$(document).ready(function(){
+	$("#section").slideDown(1000);
+});
+</script>
+
+<script>
+$(document).ready(function(){
+let likes=0;
+    $("#likeBtn").click(function(){
+
+        likes++;
+
+        $("#likeCount").text("Likes: " + likes);
+
+        $(this).fadeOut(150).fadeIn(150);
+
+    });
+});
+
+
+
+$(document).ready(function () {
+
+    $("#saveBtn").click(function () {
+
+        let recipe = {
+            title: $("h2").text(),
+            ingredients: $("ul").text(),
+            method: $("ol").text()
+        };
+
+        localStorage.setItem("savedRecipe", JSON.stringify(recipe));
+
+        $("#saveMsg").text("Recipe saved successfully!");
+    });
+
+});
+</script>
+<script>
+let saved = localStorage.getItem("savedRecipe");
+
+if(saved){
+    let recipe = JSON.parse(saved);
+    console.log(recipe);
+}
+</script>
+</head>
+<body><div id="section">	
+<div class="container-fluid">
+<h2>Aloo Matar Malai</h2>
+<h4>Ingredients</h4>
+<ul>
+<li>Serves 2</li>
+</ul>
+
+<h4>Base</h4>
+<ul>
+<li>2 green cardamom pods</li>
+<li>2 cloves</li>
+<li>1/4 teaspoon cumin seeds</li>
+<li>1 cup chopped potato</li>
+<li>1/2 cup green peas (fresh)</li>
+<li>3/4 cup water</li>
+</ul>
+
+<h4>Coconut Purée</h4>
+<ul>
+<li>1⁄2 cup grated coconut</li>
+<li>1/4 teaspoon green chili</li>
+<li>1 teaspoon rock salt</li>
+<li>1⁄2 cup water</li>
+</ul>
+
+<h4>Other Ingredients</h4>
+<ul>
+<li>2 tablespoons kasuri methi</li>
+</ul>
+
+<h4>Method</h4>
+<ol>
+<li>Heat a pot and add the cardamom, cloves, and cumin. Sauté for 2 minutes on medium flame until the spices become fragrant.</li>
+<li>Add the potato, green peas, and water to the same pot. Cover, and cook for 15 minutes on medium flame until soft.</li>
+<li>Place all the coconut purée ingredients into a blender and blend until smooth.</li>
+<li>Once the vegetables are cooked, add the kasuri methi to the pot. Cook for 2 minutes while stirring.</li>
+<li>Switch off the stove, add the coconut purée, and stir. Cover for 10 minutes, then serve
+warm with roti or rice.</li>
+</ol>
+
+<button type="button" id="likeBtn">❤️ Like Recipe</button>
+            <p id="likeCount">Likes: 0</p>
+
+<button id="saveBtn" class="btn btn-success">
+    💾 Save Recipe
+</button>
+<p id="saveMsg"></p>
+	<p>
+		<a href="sabzi.html">Back To Recipe</a>
+	</p>
+</div>
+</div>
+</body>
+</html>

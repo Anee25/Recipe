@@ -1,0 +1,10 @@
+<style>
+#section{
+display:none;
+}
+</style>
+<script>
+$(document).ready(function(){
+	$("#section").show(1000);
+});
+</script>

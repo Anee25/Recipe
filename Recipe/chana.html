@@ -1,0 +1,120 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="C:\Users\Admin\OneDrive\Desktop\Web Designing\bootstrap.min.css">
+	<script src="C:\Users\Admin\OneDrive\Desktop\Web Designing\bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="C:\Users\Admin\OneDrive\Desktop\Web Designing\Recipe\jquery.min.js"></script>
+<style>
+body {
+    background-color: #FFF8E7;
+}
+#section{
+display:none;
+}
+
+#likeCount{
+    margin-top:10px;
+    font-weight:bold;
+}
+</style><br>
+<script>
+$(document).ready(function(){
+	$("#section").slideDown(1000);
+});
+</script>
+
+<script>
+$(document).ready(function(){
+let likes=0;
+    $("#likeBtn").click(function(){
+
+        likes++;
+
+        $("#likeCount").text("Likes: " + likes);
+
+        $(this).fadeOut(150).fadeIn(150);
+
+    });
+});
+
+
+
+$(document).ready(function () {
+
+    $("#saveBtn").click(function () {
+
+        let recipe = {
+            title: $("h2").text(),
+            ingredients: $("ul").text(),
+            method: $("ol").text()
+        };
+
+        localStorage.setItem("savedRecipe", JSON.stringify(recipe));
+
+        $("#saveMsg").text("Recipe saved successfully!");
+    });
+
+});
+</script>
+<script>
+let saved = localStorage.getItem("savedRecipe");
+
+if(saved){
+    let recipe = JSON.parse(saved);
+    console.log(recipe);
+}
+</script>
+
+</head>
+<body>
+<div id="section">	
+<div class="container-fluid">
+<h2>Kala Chana Chat</h2>
+<h4>Ingredients</h4>
+<ul>
+<li>1 cup black chickpeas (kala chana)</li>
+<li>1 onion (finely chopped)</li>
+<li>1 tomato (chopped)</li>
+<li>1 cucumber (optional)</li>
+<li>1–2 green chilies (finely chopped)</li>
+<li>1 tsp chaat masala</li>
+<li>½ tsp roasted cumin powder</li>
+<li>Salt to taste</li>
+<li>Lemon juice (1–2 tsp)</li>
+<li>Fresh coriander leaves</li>
+<li>(Optional) boiled potato pieces</li>
+</ul>
+
+<h4>Method</h4>
+<ol>
+<li>Soak kala chana overnight and boil until soft.</li>
+<li>Drain excess water.</li>
+<li>Add chopped onion, tomato, cucumber, and green chilies.</li>
+<li>Mix in chaat masala, cumin powder, and salt.</li>
+<li>Add lemon juice and mix well.</li>
+<li>Garnish with fresh coriander.</li>
+<li>Serve fresh and spicy! 😋</li>
+</ol>
+
+<h4>Serving Tips</h4>
+<ul>
+<li>Eat as a healthy snack</li>
+<li>Great for weight loss diet</li>
+<li>Can be served as street-style chaat</li>
+</ul>
+
+<button type="button" id="likeBtn">❤️ Like Recipe</button>
+            <p id="likeCount">Likes: 0</p>
+
+<button id="saveBtn" class="btn btn-success">
+    💾 Save Recipe
+</button>
+<p id="saveMsg"></p>
+	<p>
+		<a href="legume.html">Back To Recipe</a>
+	</p>
+</div>
+</div>
+</body>
+</html>

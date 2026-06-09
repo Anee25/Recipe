@@ -1,0 +1,79 @@
+<html>
+<head>
+	<title>Login - FlavorNest</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="C:\Users\Admin\OneDrive\Desktop\Web Designing\bootstrap.min.css">
+	<script src="C:\Users\Admin\OneDrive\Desktop\Web Designing\bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="C:\Users\Admin\OneDrive\Desktop\Web Designing\Recipe\jquery.min.js"></script>
+<style>
+body{
+    background-color:#FFF8E7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.login-box{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+    width:300px;
+    text-align:center;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+</style>
+<script>
+$(document).ready(function(){
+
+    $("#loginBtn").click(function(){
+
+        let user = $("#username").val();
+        let pass = $("#password").val();
+
+        if(user === "" || pass === ""){
+            $("#msg").text("Please fill all fields ❌");
+            return;
+        }
+
+        // Save login (demo purpose)
+        localStorage.setItem("user", user);
+
+        $("#msg").text("Login successful ✔");
+
+        // Redirect after 1 second
+        setTimeout(function(){
+            window.location.href = "index.html";
+        }, 1000);
+
+    });
+
+});
+</script>
+
+</head>
+
+<body>
+<form action="index.html">
+<div class="login-box">
+
+    <h3>🍽️ FlavorNest Login</h3>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+
+    <button id="loginBtn" class="btn btn-success w-100">Login</button>
+
+    <p id="msg" style="margin-top:10px;"></p>
+
+</div>
+</form>
+</body>
+</html>
